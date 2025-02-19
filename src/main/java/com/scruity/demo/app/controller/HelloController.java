@@ -23,7 +23,11 @@ public class HelloController {
     
     @GetMapping("/api/public/hello")
     public String hello(HttpServletRequest req){
+        try{
          return "Hello everyone ! "+ req.getRequestedSessionId();
+        }catch(Exception ex){
+            return ex.getMessage();
+        }
     }
     
     @GetMapping("/api/admin/hello")
