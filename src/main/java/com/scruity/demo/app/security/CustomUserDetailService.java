@@ -1,6 +1,8 @@
 package com.scruity.demo.app.security;
 
-import java.io.Console;
+
+
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,7 +27,11 @@ public class CustomUserDetailService implements UserDetailsService {
             System.out.println("User not found");
             throw new UsernameNotFoundException("user Not found");
         }
-        return null;
+        return new org.springframework.security.core.userdetails.User(
+                user.getUsername(),
+                user.getPassword(),
+                new ArrayList<>()
+        );
             
     };
     
