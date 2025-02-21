@@ -9,8 +9,6 @@ import java.util.List;
 
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -23,6 +21,7 @@ public class HelloController {
     
     @GetMapping("/api/public/hello")
     public String hello(HttpServletRequest req){
+        System.out.println("Hello Method called");
         try{
          return "Hello everyone ! "+ req.getRequestedSessionId();
         }catch(Exception ex){
