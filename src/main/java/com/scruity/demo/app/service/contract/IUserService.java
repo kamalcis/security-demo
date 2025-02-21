@@ -6,6 +6,6 @@ public interface IUserService {
      
     User saveUser(User user);
 
-    String verify(User user);
+  
     
 }

@@ -16,22 +16,13 @@ public class UserService implements IUserService {
     @Autowired
     IUserRepository userRepository;
     
-    @Autowired
-    AuthenticationManager authenticationManager;
+   
 
     @Override
     public User saveUser(User user) {
           return userRepository.save(user);
     }
 
-    @Override
-    public String verify(User user) {
-      Authentication authentication =  authenticationManager.authenticate(
-                                       new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
-      if(authentication.isAuthenticated()) return "Success";
-      return "Fail";
-       
-                                       
-    }
+   
     
 }

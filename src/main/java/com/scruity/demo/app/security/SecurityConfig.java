@@ -29,8 +29,8 @@ public class SecurityConfig {
         return http.csrf(customizer-> customizer.disable())
                
                 .authorizeHttpRequests(request-> request
-                .requestMatchers("api/public/**").permitAll()   
-                .requestMatchers("api/user/login").permitAll()             
+                .requestMatchers("api/public/**").permitAll()   // public api will never be authenticated.
+                .requestMatchers("api/user/login").permitAll() // User login will be authenticated through controller            
                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))                
