@@ -35,6 +35,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request-> request
                 .requestMatchers("api/public/**").permitAll()   // public api will never be authenticated.
                 .requestMatchers("api/user/login").permitAll() // User login will be authenticated through controller            
+                .requestMatchers("api/admin/**").hasRole("ADMIN") 
+                .requestMatchers("api/user/**").hasAnyRole("USER", "ADMIN") 
                 .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session-> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))  
