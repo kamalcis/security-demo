@@ -9,15 +9,14 @@ import org.springframework.stereotype.Service;
 import com.scruity.demo.app.model.User;
 
 @Service
-public class LoginService  implements ILoginService{
+public class LoginService  {
 
     @Autowired
     AuthenticationManager authenticationManager;
 
     @Autowired
-    IJWTService jwtService;
+    JWTService jwtService;
 
-    @Override
     public String verify(User user) {
       Authentication authentication =  authenticationManager.authenticate(
                                        new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));

@@ -19,7 +19,7 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 
 @Service
-public class JWTService implements IJWTService {
+public class JWTService  {
 
     private SecretKey secretKey;
 
@@ -35,7 +35,7 @@ public class JWTService implements IJWTService {
         }
     }   
 
-    @Override
+   
     public String generateToken(String username) {
         Map<String,Object> claims = new HashMap<>();        
         long expirationTime = KeyConstants.JWT_TOKEN_EXPIRATION_TIME * 60 * 1000; // Valid for 10 Minits
@@ -57,7 +57,6 @@ public class JWTService implements IJWTService {
 
     //===============JWT Token Validation================
      public String extractUserName(String token) {
-        // extract the username from jwt token
         return extractClaim(token, Claims::getSubject);
     }
 
